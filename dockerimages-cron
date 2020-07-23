@@ -1,0 +1,3 @@
+#!/bin/bash
+#* * * * *  /root/script.sh >> /var/log/cron.log
+0 1 * * *  /root/script.sh > /proc/1/fd/1 2>/proc/1/fd/2

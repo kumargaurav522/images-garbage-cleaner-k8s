@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    name: images-garbage-cleaner
+  name: images-garbage-cleaner
+spec:
+  selector:
+    matchLabels:
+      app: images-garbage-cleaner
+  template:
+    metadata:
+      labels:
+        app: images-garbage-cleaner
+    spec:
+      volumes:
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
+      containers:
+        - image: kumargaurav522/docker_cleanup:latest
+          name: images-garbage-cleaner
+          volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-sock
+              readOnly: false
