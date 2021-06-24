@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 COPY dockerimages-cron /etc/cron.d/dockerimages-cron
 # Copy Script on root Directory
 COPY script.sh /root/
+# Set permission 
+RUN ["chmod", "+x", "/root/script.sh"]
 # Give execution rights on the cron job
 RUN chmod 0744 /etc/cron.d/dockerimages-cron
 # Apply cron job
