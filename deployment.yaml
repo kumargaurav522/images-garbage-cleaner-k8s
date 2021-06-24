@@ -20,6 +20,7 @@ spec:
       containers:
         - image: kumargaurav522/docker_cleanup:latest
           name: images-garbage-cleaner
+          imagePullPolicy: Always
           volumeMounts:
             - mountPath: /var/run/docker.sock
               name: docker-sock
